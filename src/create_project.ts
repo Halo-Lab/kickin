@@ -13,6 +13,14 @@ export const createProject = async (folder = process.cwd()): Promise<void> =>
     createPackageJson,
     copyTemplate
   )(resolve(folder)).then(() => {
+    if (folder !== process.cwd()) {
+      console.log();
+      console.log(`Now navigate to ${chalk.green(folder)}.`);
+      console.log(`  - ${chalk.magenta(`cd ${folder}`)}`);
+      console.log();
+      console.log('And then 👇');
+    }
+
     console.log();
     console.log('To start development server use:');
     console.log(`  - ${chalk.magenta('npm start')} command.`);
