@@ -82,12 +82,12 @@ const peerDependencies = async (cwd: string) => {
 
   if (needToInstallPeerDependencies) {
     console.log(
-      ` Your version of ${chalk.gray('npm')} is (${chalk.bold.hex(TOMATO_COLOR)(
-        version
-      )}).`
+      ` - Your version of ${chalk.gray('npm')} is (${chalk.bold.hex(
+        TOMATO_COLOR
+      )(version)}), so we should handle also peer dependencies.`
     );
 
-    const spinner = ora('Installing peer dependencies...');
+    const spinner = ora('Installing peer dependencies...').start();
 
     return execFor(cwd)('npm', [
       'i',
