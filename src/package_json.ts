@@ -84,9 +84,9 @@ const peerDependencies = async (cwd: string) => {
     console.log(
       ` ${chalk.blue('>')} Your version of ${chalk.gray(
         'npm'
-      )} is (${chalk.bold.hex(TOMATO_COLOR)(
+      )} is ${chalk.bold.hex(TOMATO_COLOR)(
         version
-      )}), so we should also handle peer dependencies.`
+      )}, so we should also handle peer dependencies.`
     );
     console.log();
 
