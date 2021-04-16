@@ -8,6 +8,6 @@ const exec = promisify(execute);
  * for specific working directory.
  */
 export const execFor = (cwd: string) => (
-	name: string,
-	args: ReadonlyArray<string>
+  name: string,
+  args: ReadonlyArray<string>
 ) => exec(name + ' ' + args.join(' '), { cwd });

@@ -8,17 +8,17 @@ import { asyncSequence } from './async_sequence';
 import { createPackageJson } from './package_json';
 
 export const createProject = async (folder = process.cwd()): Promise<void> =>
-	asyncSequence(
-		mkdir,
-		createPackageJson,
-		copyTemplate
-	)(resolve(folder)).then(() => {
-		console.log();
-		console.log('To start development server use:');
-		console.log(`  - ${chalk.magenta('npm start')} command.`);
-		console.log();
-		console.log('To build project:');
-		console.log(`  - ${chalk.magenta('npm run build')} command.`);
-		console.log();
-		console.log(`${chalk.bold.blue('Done!')} Happy coding :)`);
-	});
+  asyncSequence(
+    mkdir,
+    createPackageJson,
+    copyTemplate
+  )(resolve(folder)).then(() => {
+    console.log();
+    console.log('To start development server use:');
+    console.log(`  - ${chalk.magenta('npm start')} command.`);
+    console.log();
+    console.log('To build project:');
+    console.log(`  - ${chalk.magenta('npm run build')} command.`);
+    console.log();
+    console.log(`${chalk.bold.blue('Done!')} Happy coding :)`);
+  });
