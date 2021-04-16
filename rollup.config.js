@@ -18,6 +18,7 @@ export default {
     'path',
     'https',
     'chalk',
+    'semver',
     'commander',
     'child_process',
   ],
