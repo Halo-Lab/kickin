@@ -1,9 +1,8 @@
 import { promises } from 'fs';
 import { resolve, join } from 'path';
 
-import ora from 'ora';
-
 import { mkdir } from './mkdir';
+import { startProcess } from './spinner';
 
 const TEMPLATES_DIRECTORY = resolve(__dirname, '..', 'templates');
 
@@ -39,7 +38,7 @@ export const copyTemplate = async (cwd: string): Promise<void> => {
   // In future we may use more than one template.
   const templateName = 'standard';
 
-  const spinner = ora('Copying template files.').start();
+  const spinner = startProcess('Copying template files.');
 
   await copyDirectory(join(TEMPLATES_DIRECTORY, templateName), cwd).then(
     () => spinner.succeed("Project's structure is generated."),

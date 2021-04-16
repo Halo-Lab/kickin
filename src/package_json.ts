@@ -1,10 +1,10 @@
 import { promises } from 'fs';
 import { sep, join } from 'path';
 
-import ora from 'ora';
 import chalk from 'chalk';
 
-import { execFor } from './exec_for';
+import { progress } from './progress';
+import { startProcess } from './spinner';
 import { TOMATO_COLOR } from './colors';
 import { asyncSequence } from './async_sequence';
 import { checkNpmVersion } from './check_npm_version';
@@ -13,9 +13,9 @@ const generatePackageJson = async (cwd: string) => {
   const directories = cwd.split(sep);
   const lastDirectory = directories[directories.length - 1];
 
-  const spinner = ora(
+  const spinner = startProcess(
     `Initializing ${chalk.bold.yellow('package.json')}.`
-  ).start();
+  );
 
   return promises
     .writeFile(
@@ -48,31 +48,30 @@ const generatePackageJson = async (cwd: string) => {
 };
 
 const dependencies = async (cwd: string) => {
-  const spinner = ora('Installing dependencies...').start();
+  const spinner = startProcess('Installing dependencies...');
 
-  return execFor(cwd)('npm', [
-    // Must be at first.
-    'i',
-    '-D',
-    // The rest arguments.
-    'svgo',
-    'dotenv',
-    'rimraf',
-    'postcss-url',
-    'http-server',
-    'html-minifier',
-    '@11ty/eleventy',
-    '@11ty/eleventy-img',
-    'eleventy-plugin-workbox',
-    'eleventy-plugin-styles',
-    'eleventy-plugin-scripts',
-    'eleventy-plugin-compress',
-    'eleventy-shortcode-image',
-    'eleventy-plugin-pwa-icons',
-    '@quasibit/eleventy-plugin-sitemap',
-  ]).then(
+  return progress(
+    cwd,
+    [
+      'svgo',
+      'dotenv',
+      'rimraf',
+      'postcss-url',
+      'html-minifier',
+      '@11ty/eleventy',
+      '@11ty/eleventy-img',
+      'eleventy-plugin-workbox',
+      'eleventy-plugin-styles',
+      'eleventy-plugin-scripts',
+      'eleventy-plugin-compress',
+      'eleventy-shortcode-image',
+      'eleventy-plugin-pwa-icons',
+      '@quasibit/eleventy-plugin-sitemap',
+    ],
+    spinner
+  ).then(
     () => spinner.succeed('Dependencies are installed.'),
-    (error) => spinner.fail(error)
+    (error: Error) => spinner.fail(error.toString())
   );
 };
 
@@ -91,24 +90,26 @@ const peerDependencies = async (cwd: string) => {
     );
     console.log();
 
-    const spinner = ora('Installing peer dependencies...').start();
+    const spinner = startProcess('Installing peer dependencies...');
 
-    return execFor(cwd)('npm', [
-      'i',
-      '-D',
-      'sass',
-      'chalk',
-      'cssnano',
-      'postcss',
-      'esbuild',
-      'autoprefixer',
-      'browserslist',
-      'workbox-build',
-      'pwa-asset-generator',
-      '@fullhuman/postcss-purgecss',
-    ]).then(
+    return progress(
+      cwd,
+      [
+        'sass',
+        'chalk',
+        'cssnano',
+        'postcss',
+        'esbuild',
+        'autoprefixer',
+        'browserslist',
+        'workbox-build',
+        'pwa-asset-generator',
+        '@fullhuman/postcss-purgecss',
+      ],
+      spinner
+    ).then(
       () => spinner.succeed('Peer dependencies are installed.'),
-      (error) => spinner.fail(error)
+      (error: Error) => spinner.fail(error.toString())
     );
   }
 };

@@ -9,5 +9,6 @@ const exec = promisify(execute);
  */
 export const execFor = (cwd: string) => (
   name: string,
-  args: ReadonlyArray<string>
-) => exec(name + ' ' + args.join(' '), { cwd });
+  args: ReadonlyArray<string>,
+  packageName: string
+) => exec(name + ' ' + args.join(' ') + ' ' + packageName, { cwd });
