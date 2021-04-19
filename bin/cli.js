@@ -1,2 +1,3 @@
 #!/usr/bin/env node
-require('../build/index.js').start(process.argv);
+import { start } from '../build/index.js';
+start(process.argv);

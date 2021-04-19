@@ -2,11 +2,11 @@ import { promises } from 'fs';
 import { sep, join } from 'path';
 
 import chalk from 'chalk';
+import { sequentially } from '@fluss/core';
 
 import { progress } from './progress';
 import { startProcess } from './spinner';
 import { TOMATO_COLOR } from './colors';
-import { asyncSequence } from './async_sequence';
 import { checkNpmVersion } from './check_npm_version';
 
 const generatePackageJson = async (cwd: string) => {
@@ -114,7 +114,7 @@ const peerDependencies = async (cwd: string) => {
   }
 };
 
-export const createPackageJson = asyncSequence(
+export const createPackageJson = sequentially(
   generatePackageJson,
   dependencies,
   peerDependencies

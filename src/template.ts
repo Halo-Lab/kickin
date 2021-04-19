@@ -1,10 +1,14 @@
 import { promises } from 'fs';
-import { resolve, join } from 'path';
+import { resolve, join, dirname } from 'path';
 
 import { mkdir } from './mkdir';
 import { startProcess } from './spinner';
 
-const TEMPLATES_DIRECTORY = resolve(__dirname, '..', 'templates');
+const TEMPLATES_DIRECTORY = resolve(
+  dirname(new URL(import.meta.url).pathname.replace(/^file:\/\//, '')),
+  '..',
+  'templates'
+);
 
 /**
  * Recursively copy files from _input_ directory

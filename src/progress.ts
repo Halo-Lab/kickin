@@ -1,8 +1,8 @@
 import ora from 'ora';
 import chalk from 'chalk';
+import { sequentially } from '@fluss/core';
 
 import { execFor } from './exec_for';
-import { asyncSequence } from './async_sequence';
 
 const progressBarWithPercentage = (count: number, current: number): string =>
   `[ ${new Array(current).fill('=').join('')}${new Array(count - current)
@@ -18,7 +18,7 @@ export const progress = async (
   packages: ReadonlyArray<string>,
   spinner: ora.Ora
 ) =>
-  asyncSequence(
+  sequentially(
     ...packages.map((packageName, index) => async () => {
       spinner.prefixText = progressBarWithPercentage(
         packages.length,

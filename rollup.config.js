@@ -6,7 +6,7 @@ export default {
   input: 'src/index.ts',
   output: {
     dir: 'build',
-    format: 'cjs',
+    format: 'es',
     preserveModules: true,
     preserveModulesRoot: 'src',
   },
@@ -20,6 +20,7 @@ export default {
     'chalk',
     'semver',
     'commander',
+    '@fluss/core',
     'child_process',
   ],
 };

@@ -12,6 +12,8 @@ There is many starters for Eleventy projects. Yep 😵 . And we want also to get
 
 We do not recommend to install CLI globally. Instead use [npx](https://docs.npmjs.com/cli/v7/commands/npx) to initialize project.
 
+> The minimal required version of NodeJS is **12.17.0**. The reason is that CLI is built on ES module system that is native for a JavaScript world for now.
+
 ### Using
 
 `kickin` is a simple command that can accept name of the project and it will be place, where your code will live. If you already have one, then you can invoke command from inside and get your environment.
@@ -239,7 +241,7 @@ Also `manifest.json` from `src` directory will be filled with generated `icons` 
 
 For _sitemap.xml_ generation templates from `pages` directory are used.
 
-For creating proper _sitemap.xml_ define `HOST` variable in `.env` file of project.
+For creating proper _sitemap.xml_ pass correct `HOST` variable of `.env` file.
 
 Detailed about sitemap [here](https://developers.google.com/search/docs/advanced/sitemaps/overview).
 

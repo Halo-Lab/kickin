@@ -1,17 +1,19 @@
 import { resolve } from 'path';
 
 import chalk from 'chalk';
+import { sequentially } from '@fluss/core';
 
 import { mkdir } from './mkdir';
 import { copyTemplate } from './template';
-import { asyncSequence } from './async_sequence';
+import { generateEnvFile } from './env_file';
 import { createPackageJson } from './package_json';
 
 export const createProject = async (folder = process.cwd()): Promise<void> =>
-  asyncSequence(
+  sequentially(
     mkdir,
     createPackageJson,
-    copyTemplate
+    copyTemplate,
+    generateEnvFile
   )(resolve(folder)).then(() => {
     if (folder !== process.cwd()) {
       console.log();

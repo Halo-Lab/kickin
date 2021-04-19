@@ -1,4 +1,15 @@
-# [0.2.0] - 2021-04-16
+# [0.3.0] - 2021-04-19
+
+### Added
+
+- Automatic generation of `.env` file.
+
+### Changed
+
+- Package is bundled as bunch of ES modules (They are stable up from NodeJS **v12**).
+- _sitemap.xml_ is generated only in _production_ environment by default.
+
+## [0.2.0] - 2021-04-16
 
 ### Added
 
