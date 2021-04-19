@@ -1,4 +1,10 @@
-# [0.3.0] - 2021-04-19
+# [0.3.1] - 2021-04-19
+
+### Changed
+
+- Return back generation of sitemap, because of its necessity.
+
+## [0.3.0] - 2021-04-19
 
 ### Added
 
