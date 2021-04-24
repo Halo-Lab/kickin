@@ -1,9 +1,9 @@
 module.exports.render = function pwa({
   lang = 'en',
   title = '',
-  styles,
+  styles = [],
   content,
-  scripts,
+  scripts = [],
   keywords = '',
   description = '',
 }) {
@@ -39,6 +39,7 @@ module.exports.render = function pwa({
    
       <!--  Here styles are inserted. -->
       ${(Array.isArray(styles) ? styles : Array.of(styles))
+        .filter(Boolean)
         .map((url) => /* html */ `<link rel="stylesheet" href="${url}">`)
         .reduce((text, link) => text + link, '')}
     </head>
@@ -47,6 +48,7 @@ module.exports.render = function pwa({
 
       <!--  Here scripts are inserted. -->
       ${(Array.isArray(scripts) ? scripts : Array.of(scripts))
+        .filter(Boolean)
         .map((url) => /* html */ `<script defer src="${url}"></script>`)
         .reduce((text, script) => text + script, '')}
     </body>

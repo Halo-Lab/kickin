@@ -1,4 +1,15 @@
-# [0.3.1] - 2021-04-19
+# Unreleased
+
+### Changed
+
+- Make `scripts` and `styles` properties of template's data optional.
+
+### Fixed
+
+- Processing urls in CSS caused an error.
+- Absence of _extension_ variable on image processing.
+
+## [0.3.1] - 2021-04-19
 
 ### Changed
 

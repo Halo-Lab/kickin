@@ -14,9 +14,7 @@ const { reachFromBuild } = require('./reach');
 module.exports = async (content, ...parts) => {
   const outputFilePath = reachFromBuild(...parts);
 
-  await makeDirectories(path.dirname(outputFilePath)).then(() =>
-    writeFile(outputFilePath, content)
-  );
-
-  return path.join(...parts);
+  return makeDirectories(path.dirname(outputFilePath))
+    .then(() => writeFile(outputFilePath, content))
+    .then(() => path.join(...parts));
 };
