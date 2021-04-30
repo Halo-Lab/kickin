@@ -217,13 +217,15 @@ module.exports.render = async function () {
 
 _logo.png_ will be resolved to `src/assets/images/logo.png`, then `webp` and `avif` images will be generated and placed along with source image in build directory. In HTML you will receive efficient images with right paths 😊!
 
-If you define path to image from CSS (for example in `url` function), then same rules are applied here.
-
 > This is thanks to [eleventy-shortcode-image](https://github.com/Halo-Lab/eleventy-shortcode-image).
+
+If you define path to image from CSS (for example in `url` function), then same rules are applied here. But if you define url as absolute (**absolute public url**) then it will be returned as is and no image optimizations will be accomplished.
+
+> This is done intentionally in case if you want to just copy assets to output directory. 
 
 ### Other assets
 
-Like for images, path to fonts in CSS must be relative to `fonts` directory from `src`.
+Like for images, path to fonts in CSS should be relative to `fonts` directory from `src`. But you can also define absolute (**public**) urls for fonts.
 
 > Due to [wide support of `woff2` format](https://caniuse.com/?search=woff2) it is recommended to include `woff2` and `woff` font formats only.
 

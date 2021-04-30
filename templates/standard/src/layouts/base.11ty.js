@@ -1,9 +1,9 @@
 module.exports.render = function pwa({
   lang = 'en',
   title = '',
-  styles,
+  styles = [],
   content,
-  scripts,
+  scripts = [],
   keywords = '',
   description = '',
 }) {

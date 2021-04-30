@@ -4,7 +4,7 @@ const optimizeImage = require('./utils/image');
 const { isImage, isFont } = require('./utils/formats');
 const { IMAGES_DIRECTORY, FONTS_DIRECTORY } = require('./constants');
 
-/** Rebases urls in styles and make optimizations. */
+/** Rebases urls in styles and make image optimizations. */
 const rebase = (url) => {
   if (isImage(url)) {
     optimizeImage(url);

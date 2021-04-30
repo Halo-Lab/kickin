@@ -15,7 +15,7 @@ const { IMAGES_DIRECTORY, ASSETS_DIRECTORY } = require('../constants');
  * Build options for raster image optimizer
  * based on image extension.
  *
- * @param {string} name
+ * @param {string} name of image.
  */
 const getDefaultRasterOptimizerOptions = (name) => ({
   widths: [null],
