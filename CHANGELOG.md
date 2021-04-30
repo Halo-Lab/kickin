@@ -1,4 +1,16 @@
-# [0.3.1] - 2021-04-19
+# [0.4.0]
+
+### Added
+
+- Filtering `styles` and `scripts` variables in templates.
+- Handling absolute urls in styles.
+
+### Fixed
+
+- If user define current folder as `.`, then message to move to `.` folder will not be showed.
+- Undefined variable error while processing urls in styles.
+
+## [0.3.1] - 2021-04-19
 
 ### Changed
 

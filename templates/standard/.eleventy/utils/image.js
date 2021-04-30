@@ -6,6 +6,7 @@ const { optimize, extendDefaultPlugins } = require('svgo');
 const read = require('./read');
 const write = require('./write');
 const makeDirectories = require('./mkdir');
+const { extensionOf } = require('./extension_of');
 const { isSVG, getImageFormatsFrom } = require('./formats');
 const { reachFromSource, reachFromBuild } = require('./reach');
 const { IMAGES_DIRECTORY, ASSETS_DIRECTORY } = require('../constants');
@@ -18,7 +19,7 @@ const { IMAGES_DIRECTORY, ASSETS_DIRECTORY } = require('../constants');
  */
 const getDefaultRasterOptimizerOptions = (name) => ({
   widths: [null],
-  formats: getImageFormatsFrom(extension),
+  formats: getImageFormatsFrom(extensionOf(name)),
   outputDir: reachFromBuild(IMAGES_DIRECTORY),
   urlPath: `/${IMAGES_DIRECTORY}/`,
   sharpPngOptions: {
