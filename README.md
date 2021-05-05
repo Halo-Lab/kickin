@@ -6,17 +6,17 @@ Quickly bootstraps environment for developing your great site with [Eleventy.](h
 
 ## Intention
 
-There is many starters for Eleventy projects. Yep 😵 . And we want also to get into it 😊 . But, if seriously, our goal is to create comfortable environment for developers, while preserving maximal performance ✊ .
+There are many starters for Eleventy projects. Yep 😵 . And we want also to get into it 😊 . If seriously, our goal is to create comfortable environment for developers, while preserving maximal performance ✊ .
 
 ## Get started
 
-We do not recommend to install CLI globally. Instead use [npx](https://docs.npmjs.com/cli/v7/commands/npx) to initialize project.
+We do not recommend installing CLI globally. Instead, use [npx](https://docs.npmjs.com/cli/v7/commands/npx) to initialize project.
 
 > The minimal required version of NodeJS is **12.17.0**. The reason is that CLI is built on ES module system that is native for a JavaScript world for now.
 
 ### Using
 
-`kickin` is a simple command that can accept name of the project and it will be place, where your code will live. If you already have one, then you can invoke command from inside and get your environment.
+`kickin` is a simple command that can accept name of the project, and it will be place, where your code will live. If you already have one, then you can invoke command from inside and get your environment.
 
 ```sh
 npx kickin my-project
@@ -36,7 +36,7 @@ There are four main commands available:
 
 - `npm start` - starts development server on `http://localhost:3000`
 - `npm run build` - builds project.
-- `npm run certs` - creates sertificates for ability to run site with HTTPS locally.
+- `npm run certs` - creates certificates for ability to run site with HTTPS locally.
 - `npm run serve` - runs local server with secure protocol on `https://localhost:3000`. Mimics production environment.
 
 > For generating certificates [mkcert](https://github.com/FiloSottile/mkcert) utility is used. Make sure it is installed on your local machine.
@@ -45,7 +45,7 @@ You can change any part of the generated project as you want - configuration fil
 
 ## Overview
 
-As template language we encourage to use JavaScript(**.11ty.js**) files. Though no one stops you to use other templating engines. It's your choice and we respect it.
+As template language we encourage using JavaScript(**.11ty.js**) files, though no one stops you to use other templating engines. It's your choice, and we respect it.
 
 ### Structure
 
@@ -76,7 +76,7 @@ For building templates with JavaScript, you must export from file `render` metho
 module.exports.render = () => /* html */ `<div>Hello world</div>`;
 ```
 
-_It can be asyncronous._
+_It can be asynchronous._
 
 > Unfortunately, currently Eleventy does not support ES modules syntax. [Though there is a direction to it.](https://github.com/11ty/eleventy/issues/836)
 
@@ -118,7 +118,7 @@ To include component template into layout or page template simply import compone
 Component (_components/row.js_):
 
 ```js
-module.exports = () => /* html */ `<span>I am a component.</span>;
+module.exports = () => /* html */ `<span>I am a component.</span>;`
 ```
 
 Template (_pages/home.js_):
@@ -140,7 +140,7 @@ It is recommended for pages to use `pwa.11ty.js` layout. This layout template ca
 - `description` - text for page _description_ meta tag.
 - `keywords` - keywords for _keywords_ meta tag.
 
-> Unfortunately, there is [a bug](https://github.com/11ty/eleventy/issues/1435) updating HTML pages when any _required_ template's dependendy is changed.
+> Unfortunately, there is [a bug](https://github.com/11ty/eleventy/issues/1435) updating HTML pages when any _required_ template's dependency is changed.
 
 ### Styles
 
@@ -148,7 +148,7 @@ In starter [Sass](https://sass-lang.com) language is supported.
 
 Stylesheets must be located in `styles` directory and inner structure does not matter. They will be compiled, minified and cleaned from unused selectors automatically.
 
-In order to include style to page in page's template provide `styles` property in `data` object. It can be type of _string_ or _array of string_. The path to style is relative to `src/styles` directory, so you do not need to include this prefix to path.
+In order to include style to page in page's template provide `styles` property in `data` object. It can be _string_ or _array of string_. The path to style is relative to `src/styles` directory, so you do not need to include this prefix to path.
 
 ```js
 module.exports.data = {
@@ -187,7 +187,7 @@ module.exports.data = {
 
 ### Images
 
-Starter includes `image` shortcode. Use it if you want include image to HTML (either raster, or vector(SVG) one).
+Starter includes `image` shortcode. Use it if you want to include image to HTML (either raster, or vector(SVG) one).
 
 > Info about shortcodes and how to use it in JavaScript templates [here](https://www.11ty.dev/docs/shortcodes/).
 
@@ -219,7 +219,7 @@ module.exports.render = async function () {
 
 > For using shortcodes do not write template with arrow functions, because [they do not have access to `this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)!
 
-_logo.png_ will be resolved to `src/assets/images/logo.png`, then `webp` and `avif` images will be generated and placed along with source image in build directory. In HTML you will receive efficient images with right paths 😊!
+_logo.png_ will be resolved to `src/assets/images/logo.png`, then `webp` and `avif` images will be generated and placed along with source image in build directory. In HTML, you will receive efficient images with right paths 😊!
 
 > This is thanks to [eleventy-shortcode-image](https://github.com/Halo-Lab/eleventy-shortcode-image).
 
@@ -229,7 +229,7 @@ If you define path to image from CSS (for example in `url` function), then same 
 
 ### Other assets
 
-Like for images, path to fonts in CSS should be relative to `fonts` directory from `src`. But you can also define absolute (**public**) urls for fonts.
+Like for images, path to fonts in CSS should be relative to `fonts` directory from `src`. You can also define absolute (**public**) urls for fonts.
 
 > Due to [wide support of `woff2` format](https://caniuse.com/?search=woff2) it is recommended to include `woff2` and `woff` font formats only.
 
@@ -257,7 +257,7 @@ Starter contains plugin that adds service worker to build and enable offline sup
 
 > Registration service worker script will be automatically injected into each HTML page.
 
-By default worker will cache static resources (images, fonts, audio files etc.) and try to use it from cache at first. Dynamic resources, that can be changed ofted (html, js, css) are cached also, but every request will be transfered to server at first.
+By default, worker will cache static resources (images, fonts, audio files etc.) and try to use it from cache at first. Dynamic resources, that can be changed often (html, js, css) are cached also, but every request will be transferred to server at first.
 
 > More about strategies [here](https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-strategies).
 
