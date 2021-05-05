@@ -17,7 +17,7 @@ export const progress = async (
   cwd: string,
   packages: ReadonlyArray<string>,
   spinner: ora.Ora
-) =>
+): Promise<void> =>
   sequentially(
     ...packages.map((packageName, index) => async () => {
       spinner.prefixText = progressBarWithPercentage(
@@ -32,4 +32,4 @@ export const progress = async (
         packageName
       ).catch((error: Error) => () => console.error(error.toString()));
     })
-  )().then(() => (spinner.prefixText = ''));
+  )().then(() => void (spinner.prefixText = ''));

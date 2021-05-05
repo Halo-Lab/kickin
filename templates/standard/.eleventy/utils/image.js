@@ -84,8 +84,7 @@ const optimizeSVG = (url, classNames = []) =>
 // A same image can be imported in more than one
 // style file, so we should check if it was already
 // optimized.
-// TODO: review this when eleventy-shortcode-image
-// will accept options for SVGO and eleventy-omg.
+// TODO: think about caching. Should it be plugin's functionality?
 const cache = new Set();
 
 /**
