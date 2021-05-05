@@ -21,7 +21,7 @@ const getDefaultRasterOptimizerOptions = (name) => ({
   widths: [null],
   formats: getImageFormatsFrom(extensionOf(name)),
   outputDir: reachFromBuild(IMAGES_DIRECTORY, path.dirname(name)),
-  urlPath: `/${IMAGES_DIRECTORY}/${path.dirname(name)}`,
+  urlPath: `/${IMAGES_DIRECTORY}/`,
   sharpPngOptions: {
     quality: 100,
     progressive: true,
@@ -38,7 +38,8 @@ const getDefaultRasterOptimizerOptions = (name) => ({
   sharpAvifOptions: {
     quality: 100,
   },
-  filenameFormat: () => path.basename(name),
+  filenameFormat: (id, src, width, format) =>
+    `${path.basename(src, path.extname(src))}.${format}`,
 });
 
 /**
