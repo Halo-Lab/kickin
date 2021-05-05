@@ -31,6 +31,11 @@ const generatePackageJson = async (cwd: string) => {
             start: 'eleventy --serve --port=3000',
             prestart: 'npm run clean',
             prebuild: 'npm run clean',
+            serve:
+              'http-server build --port 3000 -b --ssl --key certs/key.pem --cert certs/cert.pem',
+            precerts: 'mkdirp certs',
+            certs:
+              'mkcert -key-file certs/key.pem -cert-file certs/cert.pem localhost 127.0.0.1',
           },
           browserslist: ['> 0.5%', 'last 4 version', 'not dead'],
         },
@@ -55,8 +60,10 @@ const dependencies = async (cwd: string) => {
     [
       'svgo',
       'dotenv',
+      'mkdirp',
       'rimraf',
       'postcss-url',
+      'http-server',
       'html-minifier',
       '@11ty/eleventy',
       '@11ty/eleventy-img',

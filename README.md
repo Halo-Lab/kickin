@@ -32,12 +32,16 @@ npx kickin
 
 ### After
 
-There are two commands available:
+There are four main commands available:
 
 - `npm start` - starts development server on `http://localhost:3000`
-- `npm build` - builds project.
+- `npm run build` - builds project.
+- `npm run certs` - creates sertificates for ability to run site with HTTPS locally.
+- `npm run serve` - runs local server with secure protocol on `https://localhost:3000`. Mimics production environment.
 
-> You can change any part of the generated project as you want - configuration file and all dependencies are open to be changed.
+> For generating certificates [mkcert](https://github.com/FiloSottile/mkcert) utility is used. Make sure it is installed on your local machine.
+
+You can change any part of the generated project as you want - configuration file and all dependencies are open to be changed.
 
 ## Overview
 
@@ -45,7 +49,7 @@ As template language we encourage to use JavaScript(**.11ty.js**) files. Though 
 
 ### Structure
 
-Starter's folder structure are build according to ones used in [Halo Lab](https://www.halo-lab.com).
+Starter's folder structure are built according to ones used in [Halo Lab](https://www.halo-lab.com).
 
 - All code is located in `src` folder.
 
@@ -78,7 +82,7 @@ _It can be asyncronous._
 
 > In order to highlight the HTML syntax in template string in VSCode, you can install [Comment tagged templates extension](https://github.com/mjbvz/vscode-comment-tagged-templates).
 
-If template contains data then with `render` function you should export `data` object.
+If template contains data then along with `render` function you should export `data` object.
 
 ```js
 module.exports.data = {
@@ -90,7 +94,7 @@ This object will be passed to `render` function as _first argument_.
 
 > Note: for layouts this object will have [`content`](https://www.11ty.dev/docs/layouts/#mylayout-11tyjs) property that contains inner template's HTML.
 
-Also you can organize template as **class**. It must have `render` method(either syncronous or asyncronous) and `data` method(syncronous or asyncronous) or as getter.
+Also you can organize template as **class**. It must have `render` method(either synchronous or asynchronous) and `data` method(synchronous or asynchronous) or as getter.
 
 ```js
 module.exports = class {
@@ -221,7 +225,7 @@ _logo.png_ will be resolved to `src/assets/images/logo.png`, then `webp` and `av
 
 If you define path to image from CSS (for example in `url` function), then same rules are applied here. But if you define url as absolute (**absolute public url**) then it will be returned as is and no image optimizations will be accomplished.
 
-> This is done intentionally in case if you want to just copy assets to output directory. 
+> This is done intentionally in case if you want to just copy assets to output directory.
 
 ### Other assets
 

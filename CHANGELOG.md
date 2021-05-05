@@ -1,9 +1,10 @@
-# [0.4.0]
+# [0.4.0] - 2021-05-05
 
 ### Added
 
 - Filtering `styles` and `scripts` variables in templates.
 - Handling absolute urls in styles.
+- `serve` and `certs` commands.
 
 ### Fixed
 
@@ -24,7 +25,7 @@
 
 ### Changed
 
-- Package is bundled as bunch of ES modules (They are stable up from NodeJS **v12**).
+- Package is bundled as a bunch of ES modules (They are stable up from NodeJS **v12**).
 - _sitemap.xml_ is generated only in _production_ environment by default.
 
 ## [0.2.0] - 2021-04-16
