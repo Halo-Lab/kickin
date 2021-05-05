@@ -21,6 +21,9 @@ const getDefaultRasterOptimizerOptions = (name) => ({
   widths: [null],
   formats: getImageFormatsFrom(extensionOf(name)),
   outputDir: reachFromBuild(IMAGES_DIRECTORY, path.dirname(name)),
+  // This property is used for generating HTML.
+  // In this case it is redundant, because we need
+  // only image optimizations and discard metadata.
   urlPath: `/${IMAGES_DIRECTORY}/`,
   sharpPngOptions: {
     quality: 100,
