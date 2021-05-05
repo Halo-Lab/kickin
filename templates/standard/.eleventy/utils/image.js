@@ -20,8 +20,8 @@ const { IMAGES_DIRECTORY, ASSETS_DIRECTORY } = require('../constants');
 const getDefaultRasterOptimizerOptions = (name) => ({
   widths: [null],
   formats: getImageFormatsFrom(extensionOf(name)),
-  outputDir: reachFromBuild(IMAGES_DIRECTORY),
-  urlPath: `/${IMAGES_DIRECTORY}/`,
+  outputDir: reachFromBuild(IMAGES_DIRECTORY, path.dirname(name)),
+  urlPath: `/${IMAGES_DIRECTORY}/${path.dirname(name)}`,
   sharpPngOptions: {
     quality: 100,
     progressive: true,
@@ -38,7 +38,7 @@ const getDefaultRasterOptimizerOptions = (name) => ({
   sharpAvifOptions: {
     quality: 100,
   },
-  filenameFormat: () => name,
+  filenameFormat: () => path.basename(name),
 });
 
 /**
