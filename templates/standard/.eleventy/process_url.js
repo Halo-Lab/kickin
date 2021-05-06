@@ -1,7 +1,7 @@
 const path = require('path');
 
 const optimizeImage = require('./utils/image');
-const { isImage, isFont } = require('./utils/formats');
+const { isImage, isFont, adjustExtension } = require('./utils/formats');
 const { IMAGES_DIRECTORY, FONTS_DIRECTORY } = require('./constants');
 
 /** Rebase urls in styles and make image optimizations. */
@@ -13,7 +13,7 @@ const rebase = (url) => {
   return path.join(
     '/',
     isImage(url) ? IMAGES_DIRECTORY : isFont(url) ? FONTS_DIRECTORY : '',
-    url
+    adjustExtension(url)
   );
 };
 

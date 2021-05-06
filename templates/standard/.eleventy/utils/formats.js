@@ -1,3 +1,5 @@
+const path = require('path');
+
 const { extensionOf } = require('./extension_of');
 
 /** List of script formats. */
@@ -76,12 +78,30 @@ const getImageFormatsFrom = (extension) => {
   }
 };
 
+/**
+ * We should replace extension in order to insert proper one.
+ * @11ty/eleventy-img generates only subset of known extensions
+ * and we should take one of them. For example, replace _jpg_ with
+ * _jpeg_. Also due to not wide support of `webp` and `avif` formats
+ * in CSS, we are forced to use older formats: `png` and `jpeg`.
+ */
+const adjustExtension = (url) =>
+  path.join(
+    path.dirname(url),
+    path.basename(url, extensionOf(url, true)) +
+      '.' +
+      // We can safely take first element from array,
+      // because there always will be at least one element.
+      getImageFormatsFrom(extensionOf(url))[0]
+  );
+
 module.exports = {
   isSVG,
   isFont,
   isImage,
   isStyle,
   isScript,
+  adjustExtension,
   getImageFormatsFrom,
 
   FONT_FORMATS,

@@ -5,6 +5,7 @@
 - Filtering `styles` and `scripts` variables in templates.
 - Handling absolute urls in styles.
 - `serve` and `certs` commands.
+- Adjusting proper extensions to generated ones from CSS.
 
 ### Fixed
 

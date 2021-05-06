@@ -38,7 +38,7 @@ const getDefaultRasterOptimizerOptions = (name) => ({
     quality: 100,
   },
   filenameFormat: (id, src, width, format) =>
-    `${path.basename(src, path.extname(src))}.${format}`,
+    `${path.basename(src, extensionOf(src, true))}.${format}`,
 });
 
 /**
