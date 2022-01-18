@@ -288,6 +288,6 @@ If you want to change some behavior or add new feature to site, place most code 
 
 Have fun! ✌️
 
-<a href="https://www.halo-lab.com/?utm_source=github-brifinator-3000">
-  <img src="https://api.halo-lab.com/wp-content/uploads/dev_halo.svg" alt="Developed in Halo lab" height="60">
+<a href="https://www.halo-lab.com/?utm_source=github">
+  <img src="https://dgestran.sirv.com/Images/supported-by-halolab.png" alt="Supported by Halo lab" height="60">
 </a>
